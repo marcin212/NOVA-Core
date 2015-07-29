@@ -56,4 +56,12 @@ public class DirectionTest {
 		Direction.fromOrdinal(7);
 	}
 
+	@Test
+	public void toUnidirectional() {
+		assertThat(Direction.toUnidirectional(Direction.DOWN)).isEqualTo(Direction.toUnidirectional(Direction.UP));
+		assertThat(Direction.toUnidirectional(Direction.EAST)).isEqualTo(Direction.toUnidirectional(Direction.WEST));
+		assertThat(Direction.toUnidirectional(Direction.SOUTH)).isEqualTo(Direction.toUnidirectional(Direction.NORTH));
+		assertThat(Direction.toUnidirectional(Direction.UNKNOWN)).isEqualTo(Direction.UNKNOWN);
+}
+
 }

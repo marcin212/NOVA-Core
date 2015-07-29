@@ -85,6 +85,14 @@ public enum Direction {
 	}
 
 	/**
+	 * Helper function to convert directions to direction without front or back.
+	 * @return direction from one of following: UNKNOWN, DOWN, NORTH, WEST
+	 */
+	public static Direction toUnidirectional(Direction dir) {
+		return dir == UNKNOWN ? UNKNOWN : values[dir.ordinal() & ~0x1];
+	}
+
+	/**
 	 * @return Direction opposite to this.
 	 */
 	public Direction opposite() {
@@ -101,4 +109,5 @@ public enum Direction {
 	public Vector3D toVector() {
 		return vector;
 	}
+
 }
