@@ -84,7 +84,7 @@ public enum Direction {
 		if (this == Direction.UNKNOWN) {
 			return this;
 		} else {
-			return DIRECTIONS[this.ordinal() ^ 1];
+			return VALID_DIRECTIONS[this.ordinal() ^ 1];
 		}
 	}
 

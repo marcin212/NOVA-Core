@@ -45,7 +45,7 @@ public class ConnectedTextureRenderer extends StaticBlockRenderer {
 		this.block = provider;
 		connectMask = () -> {
 			if (block.has(BlockTransform.class)) {
-				return Arrays.stream(Direction.DIRECTIONS)
+				return Arrays.stream(Direction.VALID_DIRECTIONS)
 					.filter(d -> block.world().getBlock(block.position().add(d.toVector())).get().sameType(block))
 					.map(d -> 1 << d.ordinal())
 					.reduce(0, (b, a) -> a | b);
@@ -62,7 +62,7 @@ public class ConnectedTextureRenderer extends StaticBlockRenderer {
 		BlockModelUtil.drawBlock(model, block);
 
 		//Render the block edge
-		for (Direction dir : Direction.DIRECTIONS)
+		for (Direction dir : Direction.VALID_DIRECTIONS)
 			if ((faceMask & (1 << dir.ordinal())) != 0) {
 				renderFace(dir, model);
 			}
